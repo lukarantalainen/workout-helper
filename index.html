@@ -56,8 +56,24 @@
                             <div class="search-root">'
 
                                 <div class="search-container" id="search-container">
-                                    <input id="search-field" class="search-field" type="text" autocomplete="off"
-                                        placeholder="Search">
+                                    <form class="input-container" id="search-input-container">
+                                        <div class="input-button-container">
+                                            <button id="search-submit-button" type="submit" class="text-input-button">
+                                                <span id="input-icon" class="material-symbols-outlined">search</span>
+                                            </button>
+                                        </div>
+
+                                        <input id="search-input" class="input-field" placeholder="Search presets"
+                                            autocomplete="off"
+                                            onfocus="inputFocus('search-input-container', 'search-reset-button')"
+                                            onblur="inputBlur('search-input-container', 'search-reset-button')">
+
+                                        <div class="input-button-container">
+                                            <button id="search-reset-button" type="reset" class="text-input-button">
+                                                <span id="input-icon" class="material-symbols-outlined">close</span>
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
 
                                 <div class="item-container">
@@ -85,22 +101,27 @@
             </ul>
 
             <div class="input-root">
-                <form id="input-container">
+                <form class="input-container" id="exercise-input-container">
                     <div class="input-button-container">
                         <button id="text-submit-button" type="submit" class="text-input-button"
                             onclick="addExerciseToList(event)">
-                            <span id="input-icon" class="material-symbols-outlined">check</span>
+                            <span id="input-icon" class="material-symbols-outlined">add</span>
                         </button>
                     </div>
+
                     <input id="exercise-name-input" class="input-field" placeholder="Add a new exercise"
-                        autocomplete="off" onfocus="inputFocus()" onblur="inputBlur()">
+                        autocomplete="off" onfocus="inputFocus('exercise-input-container', 'text-reset-button')"
+                        onblur="inputBlur('exercise-input-container', 'text-reset-button')">
+
                     <div class="input-button-container">
-                        <button id="text-reset-button" class="text-input-button" onclick="clearInput()">
+                        <button id="text-reset-button" type="reset" class="text-input-button">
                             <span id="input-icon" class="material-symbols-outlined">close</span>
                         </button>
                     </div>
                 </form>
+
                 <div class="horizontal-shake" id="error-container">
+
                 </div>
             </div>
         </div>

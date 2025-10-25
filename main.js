@@ -154,16 +154,17 @@ function startExercise() {
     listItems();
 }
 
-function inputFocus() {
-    let container = document.getElementById("input-container");
-    container.style.outline = "2px solid #146eff";
+function inputFocus(container, reset) {
+    let input = document.getElementById(container);
+    input.style.outline = "2px solid #146eff";
+    let resetButton = document.getElementById(reset)
+    resetButton.style.visibility = "visible";
 }
 
-function inputBlur() {
-    let container = document.getElementById("input-container");
-    container.style.outline = "none";
+function inputBlur(container, reset) {
+    let input = document.getElementById(container);
+    input.style.outline = "none";
+    let resetButton = document.getElementById(reset)
+    resetButton.style.visibility = "hidden";
 }
 
-function clearInput() {
-    document.getElementById("exercise-name-input").value = "";
-}

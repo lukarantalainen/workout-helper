@@ -29,8 +29,7 @@
        top: 0;
        position: sticky;
        padding: 0 20px;
-       /* border-bottom: solid 1px #c3c7cb; */
-       box-shadow: 0 1px 8px rgba(54, 54, 54, 0.2);
+       box-shadow: 0 1px 2px rgba(54, 54, 54, 0.2);
        background-color: #ffffff70;
        backdrop-filter: blur(10px);
    }
@@ -130,7 +129,10 @@
    }
 
    .select-container {
-       display: none;
+       display: block;
+       background-color: #f5c535;
+       border-radius: 10px;
+       margin-top: 10px;
    }
 
    .select-button-container {
@@ -155,7 +157,7 @@
        padding: 1em;
        background-color: #ffffff;
        border-radius: 5px;
-       box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
    }
 
    .input-root {
@@ -164,7 +166,7 @@
        padding: 1em 0 0 0;
    }
 
-   #input-container {
+   .input-container {
        display: flex;
        align-items: center;
        justify-content: space-between;
@@ -172,11 +174,11 @@
        height: 30px;
        min-width: 0;
        max-width: 300px;
-       background-color: #d8d8d8;
+       background-color: #f5f5f5;
    }
 
    #input-container:hover {
-       filter: brightness(90%);
+       filter: brightness(95%);
    }
 
    .input-button-container {
@@ -187,12 +189,24 @@
        display: flex;
        align-items: center;
        justify-content: center;
-       background-color: #d8d8d8;
+       background-color: #f5f5f5;
        border: none;
        width: 30px;
        height: 100%;
        border-radius: 10px;
        padding: 0;
+   }
+
+   .text-input-button:hover {
+       filter: brightness(95%);
+   }
+
+   .text-input-button:active {
+       filter: brightness(110%);
+   }
+
+   #text-reset-button {
+       visibility: hidden;
    }
 
    .input-field {
@@ -203,16 +217,13 @@
        flex-grow: 1;
        flex-shrink: 1;
        min-width: 0;
-       text-align: center;
+       text-align: left;
+       padding-left: 0.5em;
        background-color: transparent;
    }
 
-   /* .input-field::placeholder {
-       text-align: center;
-   } */
-
-   .search-root {
-       display: block;
+   .input-field::placeholder {
+       color: #707072;
    }
 
    .list-container {
