@@ -1,33 +1,37 @@
 function exerciseListAppend(id) {
     if (!id) {
         id = document.getElementById("exercise-name-input").value;
-
     }
 
     let element = document.getElementById(id);
 
-    if (inputEmpty(id) === false) {
-        if (element != null) {
-            id = id + "#";
+    if (element != null) {
+        msg = "Name already exists";
+        inputError(msg);
+    }
+
+    else {
+        if (inputEmpty(id) === false) {
+
+            if (document.getElementById("error-text")) {
+                let errorContainer = document.getElementById("error-container");
+                errorContainer.removeChild(document.getElementById("error-text"));
+
+            }
+
+            let listContainer = document.createElement("div");
+            listContainer.setAttribute("id", id);
+            listContainer.setAttribute("class", "list-container");
+
+            let buttons = createListButtons(id);
+            let item = createListItem(id);
+
+            listContainer.appendChild(item);
+            listContainer.appendChild(buttons);
+            document.getElementById("exercise-list").appendChild(listContainer);
+            clearInput();
         }
 
-        if (document.getElementById("error-text")) {
-            let errorContainer = document.getElementById("error-container");
-            errorContainer.removeChild(document.getElementById("error-text"));
-
-        }
-
-        let listContainer = document.createElement("div");
-        listContainer.setAttribute("id", id);
-        listContainer.setAttribute("class", "list-container");
-
-        let buttons = createListButtons(id);
-        let item = createListItem(id);
-
-        listContainer.appendChild(item);
-        listContainer.appendChild(buttons);
-
-        document.getElementById("exercise-list").appendChild(listContainer);
     }
 
 }
@@ -84,8 +88,9 @@ function createListItem(id) {
 function inputEmpty(input) {
     if (input.trim() === "") {
 
+        msg = "Name can't be empty";
 
-        inputError();
+        inputError(msg);
 
         return true;
     }
@@ -95,12 +100,11 @@ function inputEmpty(input) {
     }
 }
 
-function inputError() {
-
+function inputError(msg) {
     let errorContainer = document.getElementById("error-container");
     error = document.createElement("span");
     error.setAttribute("id", "error-text");
-    error.textContent = "Input cannot be empty";
+    error.textContent = msg;
     if (document.getElementById("error-text")) {
         errorContainer.removeChild(document.getElementById("error-text"));
     }
@@ -110,27 +114,14 @@ function inputError() {
 
 }
 
-function addExerciseToList() {
+function addExerciseToList(event) {
+    event.preventDefault();
     exerciseListAppend();
-    clearInput();
 }
 
+function select_preset() {
 
 
-function load_preset() {
-    let presets = { "p1": ["ex1", "ex2"] };
-
-
-
-    resetList();
-
-    const list = presets["p1"];
-
-    for (let i in list) {
-        let listitem = list[i];
-
-        addExerciseToList(listitem);
-    }
 }
 
 function skipExercise(id) {
@@ -175,14 +166,4 @@ function inputBlur() {
 
 function clearInput() {
     document.getElementById("exercise-name-input").value = "";
-}
-
-function inputSubmitListener() {
-    const inputField = document.getElementById("exercise-name-input");
-    inputField.addEventListener("keydown", function (event) {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            addExerciseToList();
-        };
-    });
 }

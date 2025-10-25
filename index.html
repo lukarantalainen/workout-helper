@@ -33,20 +33,7 @@
     </header>
 
     <div class="content">
-        <!-- <div class="select-container">
-            <div class="search-container">
-                <input id="search-field" class="search-input" type="text">
-            </div>
-            <div class="item-container">
-                <ul>
-                    <li>sfs</li>
-                    <li>sfs</li>
-                    <li>sfs</li>
-                    <li>sfs</li>
-                    <li>sfs</li>
-                </ul>
-            </div>
-        </div> -->
+
 
 
         <div class="main-content">
@@ -56,32 +43,63 @@
                     <h2>Workout name</h2>
                 </div>
                 <div class="content-header-button-container">
-                    <button id="reset-button" class="header-button" onclick="resetList()">Reset list</button>
-                    <button id="select-button" class="header-button" onclick="load_preset()">Select preset</button>
-                    <button id="start-button" class="header-button">Start</button>
+                    <div class="reset-button-container">
+                        <button id="reset-button" class="header-button" onclick="resetList()">Reset list</button>
+                    </div>
+
+                    <div class="select-button-container">
+                        <button id="select-button" class="header-button" onclick="select_preset()">Select
+                            preset
+                        </button>
+
+                        <div class="select-container">
+                            <div class="search-root">'
+
+                                <div class="search-container" id="search-container">
+                                    <input id="search-field" class="search-field" type="text" autocomplete="off"
+                                        placeholder="Search">
+                                </div>
+
+                                <div class="item-container">
+                                    <ul style="list-style:none;">
+                                        <li>sfs</li>
+                                        <li>sfs</li>
+                                        <li>sfs</li>
+                                        <li>sfs</li>
+                                        <li>sfs</li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="start-button-container">
+                        <button id="start-button" class="header-button">Start</button>
+                    </div>
+
                 </div>
             </div>
-
 
             <ul id="exercise-list" style="list-style:none;">
 
             </ul>
 
             <div class="input-root">
-                <div id="input-container">
+                <form id="input-container">
                     <div class="input-button-container">
-                        <button id="text-submit-button" class="text-input-button" onclick="addExerciseToList()">
+                        <button id="text-submit-button" type="submit" class="text-input-button"
+                            onclick="addExerciseToList(event)">
                             <span id="input-icon" class="material-symbols-outlined">check</span>
                         </button>
                     </div>
                     <input id="exercise-name-input" class="input-field" placeholder="Add a new exercise"
-                        autocomplete="off" onfocus="inputFocus()" onblur="inputBlur()" oninput="inputSubmitListener()">
+                        autocomplete="off" onfocus="inputFocus()" onblur="inputBlur()">
                     <div class="input-button-container">
                         <button id="text-reset-button" class="text-input-button" onclick="clearInput()">
                             <span id="input-icon" class="material-symbols-outlined">close</span>
                         </button>
                     </div>
-                </div>
+                </form>
                 <div class="horizontal-shake" id="error-container">
                 </div>
             </div>
