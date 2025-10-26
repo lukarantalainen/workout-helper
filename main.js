@@ -29,7 +29,7 @@ function exerciseListAppend(id) {
             listContainer.appendChild(item);
             listContainer.appendChild(buttons);
             document.getElementById("exercise-list").appendChild(listContainer);
-            clearInput();
+            clearInput(event, "exercise-name-input", "text-reset-button");
         }
 
     }
@@ -114,13 +114,21 @@ function inputError(msg) {
 
 }
 
+function clearInput(event, input, reset) {
+    event.preventDefault();
+    document.getElementById(reset).style.visibility = "hidden";
+    document.getElementById(input).value = "";
+    document.getElementById(input).focus();
+    onInputHideResetButton(input, reset);
+
+}
+
 function addExerciseToList(event) {
     event.preventDefault();
     exerciseListAppend();
 }
 
 function select_preset() {
-
 
 }
 
@@ -154,17 +162,15 @@ function startExercise() {
     listItems();
 }
 
-function inputFocus(container, reset) {
-    let input = document.getElementById(container);
-    input.style.outline = "2px solid #146eff";
+function onInputHideResetButton(input, reset) {
     let resetButton = document.getElementById(reset)
-    resetButton.style.visibility = "visible";
-}
+    resetButton.classList.add("visible");
 
-function inputBlur(container, reset) {
-    let input = document.getElementById(container);
-    input.style.outline = "none";
-    let resetButton = document.getElementById(reset)
-    resetButton.style.visibility = "hidden";
-}
+    let inputField = document.getElementById(input);
 
+    if (inputField.value == "") {
+        resetButton.classList.remove("visible");
+
+    }
+
+}

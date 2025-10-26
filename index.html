@@ -53,38 +53,44 @@
                         </button>
 
                         <div class="select-container">
-                            <div class="search-root">'
-
+                            <div class="search-root">
                                 <div class="search-container" id="search-container">
                                     <form class="input-container" id="search-input-container">
-                                        <div class="input-button-container">
-                                            <button id="search-submit-button" type="submit" class="text-input-button">
+                                        <div class="search-button-container">
+                                            <button id="search-submit-button" class="search-button" type="submit">
                                                 <span id="input-icon" class="material-symbols-outlined">search</span>
                                             </button>
                                         </div>
 
                                         <input id="search-input" class="input-field" placeholder="Search presets"
                                             autocomplete="off"
-                                            onfocus="inputFocus('search-input-container', 'search-reset-button')"
-                                            onblur="inputBlur('search-input-container', 'search-reset-button')">
+                                            oninput="onInputHideResetButton('search-input', 'search-reset-button')">
 
-                                        <div class="input-button-container">
-                                            <button id="search-reset-button" type="reset" class="text-input-button">
+                                        <div class="search-button-container">
+                                            <button id="search-reset-button" class="search-button" type="reset"
+                                                onclick="clearInput(event, 'search-input', 'search-reset-button')">
                                                 <span id="input-icon" class="material-symbols-outlined">close</span>
                                             </button>
                                         </div>
                                     </form>
                                 </div>
-
-                                <div class="item-container">
-                                    <ul style="list-style:none;">
-                                        <li>sfs</li>
-                                        <li>sfs</li>
-                                        <li>sfs</li>
-                                        <li>sfs</li>
-                                        <li>sfs</li>
-                                    </ul>
-                                </div>
+                            </div>
+                            <div class="preset-list-container">
+                                <ul style="list-style: none;">
+                                    <div class="preset-list-item">
+                                        <li>hi </li>
+                                        <input type="radio" name="preset-button">
+                                    </div>
+                                    <div class="preset-list-item">
+                                        <li>hi </li><input type="radio" name="preset-button">
+                                    </div>
+                                    <div class="preset-list-item">
+                                        <li>hi </li><input type="radio" name="preset-button">
+                                    </div>
+                                    <div class="preset-list-item">
+                                        <li>hi </li><input type="radio" name="preset-button">
+                                    </div>
+                                </ul>
 
                             </div>
                         </div>
@@ -109,20 +115,16 @@
                         </button>
                     </div>
 
-                    <input id="exercise-name-input" class="input-field" placeholder="Add a new exercise"
-                        autocomplete="off" onfocus="inputFocus('exercise-input-container', 'text-reset-button')"
-                        onblur="inputBlur('exercise-input-container', 'text-reset-button')">
+                    <input id="exercise-name-input" class="input-field" placeholder="Add a new exercise" type="text"
+                        autocomplete="off" oninput="onInputHideResetButton('exercise-name-input', 'text-reset-button')">
 
                     <div class="input-button-container">
-                        <button id="text-reset-button" type="reset" class="text-input-button">
+                        <button id="text-reset-button" class="text-input-button"
+                            onclick="clearInput(event, 'exercise-name-input', 'text-reset-button')">
                             <span id="input-icon" class="material-symbols-outlined">close</span>
                         </button>
                     </div>
                 </form>
-
-                <div class="horizontal-shake" id="error-container">
-
-                </div>
             </div>
         </div>
     </div>
